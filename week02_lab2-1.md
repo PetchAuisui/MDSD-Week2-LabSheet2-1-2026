@@ -273,10 +273,72 @@ void main() {
 ```
 **บันทึกผลการทดลอง: บันทึกโค้ดคำสั่งที่ได้**
 ```dart
-// บันทึกโค้ดในส่วนนี้
+void main() {
 
+  // === บล็อกที่ 1: ชนิดข้อมูลพื้นฐาน ===
+  String studentName = "ศิวาภัทร อุยสุย";
+  int studentAge = 21;
+  double gpa = 3.98;
+  bool isEnrolled = true;
 
+  print("=== ข้อมูลนักศึกษา ===");
+  print("ชื่อ: $studentName");
+  print("อายุ: $studentAge ปี");
+  print("GPA: $gpa");
+  print("ลงทะเบียนแล้ว: $isEnrolled");
+  print("ปีเกิด (ประมาณ): ${2026 - studentAge}");
+  
+    // === บล็อกที่ 2: Null Safety ===
+  print("\n=== Null Safety ===");
+  String? nickname = null;
+  print("ชื่อเล่น: ${nickname ?? 'ไม่มี'}");  // → ไม่มี
+
+  nickname = "เพชร";
+  print("ชื่อเล่น: ${nickname ?? 'ไม่มี'}");  // → ชาย
+  print("ความยาว: ${nickname?.length}");       // → 3
+  print("ตัวพิมพ์ใหญ่: ${nickname?.toUpperCase()}");// → ชาย
+  
+    // === บล็อกที่ 3: List ===
+  print("\n=== รายวิชาที่ลงทะเบียน ===");
+  List<String> courses = ["Database","Mobile Dev", "Web Dev", "AI"];
+  Map<String, int> courseScores = {
+    "Database" : 88,
+    "Mobile Dev": 90,
+    "Web Dev": 85,
+    "AI": 92,
+  };
+
+  // วนซ้ำแสดงรายวิชาและคะแนน
+  for (int i = 0; i < courses.length; i++) {
+    String course = courses[i];
+    int? score = courseScores[course];
+    print("${i + 1}. $course: ${score ?? 'ยังไม่มีคะแนน'} คะแนน");
+  }
+
+  // คำนวณเฉลี่ย
+  int total = courseScores.values.reduce((a, b) => a + b);
+  double avg = total / courseScores.length;
+  print("คะแนนเฉลี่ย: ${avg.toStringAsFixed(2)}");
+  
+  var highestCourse = courseScores.entries.reduce((current,next) => current.value > next.value ? current : next);
+ print("วิชาที่ได้คะแนนสูงที่สุด : ${highestCourse.key} (${highestCourse.value} คะแนน)");
+ 
+  int count = courseScores.values.where((score) => score >= 90).length;
+  print("จำนวนวิชาที่ได้คะแนนตั้งแต่ 90 คะแนนขึ้นไป: $count วิชา");
+  
+  Set<String> passedCourses = {};
+  courseScores.forEach((course,score) {
+    if (score >= 80) {
+      passedCourses.add(course);
+    }
+  });
+  print("วิชาที่คะแนนผ่านเกณฑ์(เกณฑ์ผ่านคือ 80 คะแนน): $passedCourses");
+  
+}
 ```
+**ScreenShot**
+<img width="1470" height="922" alt="image" src="https://github.com/user-attachments/assets/76ece463-4ead-47c9-817d-322f5e52a89d" />
+
 ---
 
 ## ส่วนที่ 2 — ทฤษฎีและการทดลอง: Functions
