@@ -253,6 +253,9 @@ void main() {
 ```
 
 **ขั้นตอนที่ 7** กด Run และบันทึกผลลัพธ์ทั้งหมด
+Screenshot
+<img width="1470" height="922" alt="image" src="https://github.com/user-attachments/assets/d9823d38-5728-4ba6-bfd7-74e539d80ee4" />
+
 
 ---
 
@@ -321,7 +324,7 @@ void main() {
   print("คะแนนเฉลี่ย: ${avg.toStringAsFixed(2)}");
   
   var highestCourse = courseScores.entries.reduce((current,next) => current.value > next.value ? current : next);
- print("วิชาที่ได้คะแนนสูงที่สุด : ${highestCourse.key} (${highestCourse.value} คะแนน)");
+  print("วิชาที่ได้คะแนนสูงที่สุด : ${highestCourse.key} (${highestCourse.value} คะแนน)");
  
   int count = courseScores.values.where((score) => score >= 90).length;
   print("จำนวนวิชาที่ได้คะแนนตั้งแต่ 90 คะแนนขึ้นไป: $count วิชา");
